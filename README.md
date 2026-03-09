@@ -80,6 +80,11 @@ Render environment variables:
 - `SPRING_DATASOURCE_USERNAME=username`
 - `SPRING_DATASOURCE_PASSWORD=password`
 
+You can also set only:
+- `DATABASE_URL=postgres://username:password@host:5432/database`
+
+The app automatically converts Render-style `DATABASE_URL` to JDBC at startup.
+
 Fraud config:
 - `fraud.amount-threshold=100000`
 - `fraud.tx-count-threshold=5`
