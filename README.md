@@ -69,13 +69,16 @@ Main config files:
 - `src/main/resources/application.yml`
 
 Database values (PostgreSQL):
-- `spring.datasource.url=${DATABASE_URL}`
-- `spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect`
+- `spring.datasource.url=${SPRING_DATASOURCE_URL}`
+- `spring.datasource.username=${SPRING_DATASOURCE_USERNAME}`
+- `spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}`
 - `spring.jpa.hibernate.ddl-auto=update`
 - `spring.jpa.show-sql=true`
 
-Render environment variable:
-- `DATABASE_URL=postgres://username:password@host:5432/database`
+Render environment variables:
+- `SPRING_DATASOURCE_URL=jdbc:postgresql://host:5432/database`
+- `SPRING_DATASOURCE_USERNAME=username`
+- `SPRING_DATASOURCE_PASSWORD=password`
 
 Fraud config:
 - `fraud.amount-threshold=100000`
@@ -97,9 +100,11 @@ Tables:
 ## How to Run (Local)
 
 1. Start PostgreSQL and create DB `banking_db`.
-2. Set env var:
+2. Set env vars:
    ```bash
-   DATABASE_URL=jdbc:postgresql://localhost:5432/banking_db?user=postgres&password=postgres
+   SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/banking_db
+   SPRING_DATASOURCE_USERNAME=postgres
+   SPRING_DATASOURCE_PASSWORD=postgres
    ```
 3. Build and run:
    ```bash

@@ -17,7 +17,9 @@ services:
     build: .
     container_name: banking-app
     environment:
-      DATABASE_URL: jdbc:postgresql://postgres:5432/banking_db?user=postgres&password=postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/banking_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
     ports:
       - "8080:8080"
     depends_on:

@@ -4,14 +4,7 @@ server:
 spring:
   application:
     name: banking-transaction-management
-
-  datasource:
-    url: jdbc:${DATABASE_URL}
-    driver-class-name: org.postgresql.Driver
-
   jpa:
-    hibernate:
-      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
