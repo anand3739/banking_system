@@ -6,7 +6,7 @@ spring:
     name: banking-transaction-management
 
   datasource:
-    url: ${postgresql://banking_db_pm4f_user:y4jL3sz31AHysdEAZKoMMXqM0Gy5sNxh@dpg-d6n7bpkr85hc73df7uhg-a/banking_db_pm4f}
+    url: ${DATABASE_URL}
     driver-class-name: org.postgresql.Driver
 
   jpa:
