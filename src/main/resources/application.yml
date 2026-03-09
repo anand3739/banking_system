@@ -6,11 +6,10 @@ spring:
     name: banking-transaction-management
 
   datasource:
-    url: ${DATABASE_URL}
+    url: jdbc:${DATABASE_URL}
     driver-class-name: org.postgresql.Driver
 
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     properties:
@@ -18,10 +17,6 @@ spring:
         format_sql: true
         jdbc:
           time_zone: UTC
-
-  sql:
-    init:
-      mode: never
 
 logging:
   level:
