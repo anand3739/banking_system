@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Control Panel</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="backdrop"></div>
+<header class="hero">
+    <div>
+        <p class="eyebrow">Banking Transaction Management</p>
+        <h1>Control Panel</h1>
+        <p class="subtitle">Manage customers, accounts, transfers, and fraud alerts from one dashboard.</p>
+    </div>
+    <form id="api-config-form" class="api-config">
+        <label for="apiBaseUrl">API Base URL</label>
+        <div class="api-row">
+            <input id="apiBaseUrl" type="text" placeholder="http://localhost:8080" />
+            <button type="submit">Apply</button>
+        </div>
+    </form>
+</header>
+
+<main class="grid">
+    <section class="card">
+        <h2>Create Customer</h2>
+        <form id="create-customer-form" class="form">
+            <input id="customerName" type="text" placeholder="Name" required>
+            <input id="customerEmail" type="email" placeholder="Email" required>
+            <input id="customerPhone" type="text" placeholder="Phone" required>
+            <button type="submit">Create Customer</button>
+        </form>
+    </section>
+
+    <section class="card">
+        <h2>Create Account</h2>
+        <form id="create-account-form" class="form">
+            <input id="accountCustomerId" type="number" placeholder="Customer ID" required>
+            <select id="accountType" required>
+                <option value="">Account Type</option>
+                <option value="SAVINGS">SAVINGS</option>
+                <option value="CURRENT">CURRENT</option>
+            </select>
+            <input id="initialBalance" type="number" step="0.01" placeholder="Initial Balance" required>
+            <button type="submit">Create Account</button>
+        </form>
+    </section>
+
+    <section class="card">
+        <h2>Account Lookup</h2>
+        <form id="account-details-form" class="form">
+            <input id="accountIdForDetails" type="number" placeholder="Account ID" required>
+            <button type="submit">Get Account Details</button>
+        </form>
+        <form id="account-balance-form" class="form compact">
+            <input id="accountIdForBalance" type="number" placeholder="Account ID" required>
+            <button type="submit">Check Balance</button>
+        </form>
+    </section>
+
+    <section class="card">
+        <h2>Deposit</h2>
+        <form id="deposit-form" class="form">
+            <input id="depositAccountId" type="number" placeholder="Account ID" required>
+            <input id="depositAmount" type="number" step="0.01" placeholder="Amount" required>
+            <button type="submit">Deposit</button>
+        </form>
+    </section>
+
+    <section class="card">
+        <h2>Withdraw</h2>
+        <form id="withdraw-form" class="form">
+            <input id="withdrawAccountId" type="number" placeholder="Account ID" required>
+            <input id="withdrawAmount" type="number" step="0.01" placeholder="Amount" required>
+            <button type="submit">Withdraw</button>
+        </form>
+    </section>
+
+    <section class="card">
+        <h2>Transfer</h2>
+        <form id="transfer-form" class="form">
+            <input id="senderAccountId" type="number" placeholder="Sender Account ID" required>
+            <input id="receiverAccountId" type="number" placeholder="Receiver Account ID" required>
+            <input id="transferAmount" type="number" step="0.01" placeholder="Amount" required>
+            <button type="submit">Transfer</button>
+        </form>
+    </section>
+</main>
+
+<section class="panel">
+    <div class="panel-head">
+        <h2>Transaction History</h2>
+        <form id="history-form" class="inline-form">
+            <input id="historyAccountId" type="number" placeholder="Account ID" required>
+            <button type="submit">Load History</button>
+        </form>
+    </div>
+    <div class="table-wrap">
+        <table id="history-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Time</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</section>
+
+<section class="panel">
+    <div class="panel-head">
+        <h2>Fraud Alerts</h2>
+        <button id="load-alerts-btn">Refresh Alerts</button>
+    </div>
+    <div class="table-wrap">
+        <table id="alerts-table">
+            <thead>
+            <tr>
+                <th>Alert ID</th>
+                <th>Tx ID</th>
+                <th>Reason</th>
+                <th>Risk Score</th>
+                <th>Flagged At</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</section>
+
+<section class="panel output-panel">
+    <div class="panel-head">
+        <h2>API Response</h2>
+        <button id="clear-output-btn">Clear</button>
+    </div>
+    <pre id="api-output">Ready.</pre>
+</section>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="/app.js"></script>
+</body>
+</html>

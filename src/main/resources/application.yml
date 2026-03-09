@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: banking-transaction-management
+
+  datasource:
+    url: ${postgresql://banking_db_pm4f_user:y4jL3sz31AHysdEAZKoMMXqM0Gy5sNxh@dpg-d6n7bpkr85hc73df7uhg-a/banking_db_pm4f}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+
+  sql:
+    init:
+      mode: never
+
+logging:
+  level:
+    com.example.banking: INFO
+
+fraud:
+  amount-threshold: 100000
+  tx-count-threshold: 5
+  tx-window-minutes: 10
+  blacklisted-account-ids: [999001, 999002, 999003]
